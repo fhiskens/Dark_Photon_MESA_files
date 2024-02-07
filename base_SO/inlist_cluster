@@ -1,0 +1,27 @@
+&star_job
+    extras_rpar(4) = 3.40 
+    extras_rpar(5) = -15.00 
+    load_saved_model = .true.
+    saved_model_name = '/data/gpfs/projects/punim0011/fhiskens/HB_stars/dark_photons/RGB_runs/Yinit_0.2607/m_3.40/chi_-15.00/eta_0.20/HB.mod'
+    save_model_filename = 'E-AGB.mod'
+    num_special_rate_factors = 1
+    reaction_for_special_factor(:) = 'r_c12_ag_o16'
+    special_rate_factor(:) = 1.00
+
+/! end of star_job namelist
+
+&controls
+    initial_mass = 0.82 
+    initial_Z = 0.001
+    initial_Y = 0.261
+    Zbase = 0.001
+    photo_interval = 1000
+    Reimers_scaling_factor = 0.20
+    HB_limit = 0.0001
+    mesh_delta_coeff = 0.51
+    max_years_for_timestep = 46426.426416482325
+    overshoot_f(1) = 0.0020
+    overshoot_f0(1) = 0.00100
+
+/ ! end of controls namelist
+

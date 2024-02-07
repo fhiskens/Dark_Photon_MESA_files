@@ -1,0 +1,17 @@
+&star_job
+    extras_rpar(4) = 3.40 
+    extras_rpar(5) = -15.00 
+    load_saved_model = .true.
+    saved_model_name = 'E-AGB.mod'
+    save_model_filename = 'TP-AGB.mod'
+    num_special_rate_factors = 1
+    reaction_for_special_factor(:) = 'r_c12_ag_o16'
+    special_rate_factor(:) = 1.00
+
+/! end of star_job namelist
+
+&controls
+    star_history_name = 'AGB_history_no_overshoot.data'
+
+/ ! end of controls namelist
+

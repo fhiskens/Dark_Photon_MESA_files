@@ -1,0 +1,35 @@
+! this is the master inlist that MESA reads when it starts.
+
+! This file tells MESA to go look elsewhere for its configuration
+! info. This makes changing between different inlists easier, by
+! allowing you to easily change the name of the file that gets read.
+
+&star_job
+
+    read_extra_star_job_inlist1 = .true.
+    extra_star_job_inlist1_name = '/path_to_file/Dark_Photon_MESA_files/base_AGB/inlist_lowinter'
+
+    read_extra_star_job_inlist2 = .true.
+    extra_star_job_inlist2_name = 'inlist_cluster'
+    
+
+/ ! end of star_job namelist
+
+
+&controls
+
+    read_extra_controls_inlist1 = .true.
+    extra_controls_inlist1_name = '/path_to_file/Dark_Photon_MESA_files/base_AGB/inlist_lowinter'
+
+    read_extra_controls_inlist2 = .true.
+    extra_controls_inlist2_name = 'inlist_cluster'
+
+/ ! end of controls namelist
+
+
+&pgstar
+
+    read_extra_pgstar_inlist1 = .true.
+    extra_pgstar_inlist1_name = '/path_to_file/Dark_Photon_MESA_files/base_AGB/inlist_lowinter'
+
+/ ! end of pgstar namelist

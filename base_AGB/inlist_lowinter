@@ -1,0 +1,221 @@
+!low and intermediate mass
+
+&star_job
+      
+!PMS
+
+      load_saved_model = .true.
+      saved_model_name = 'E-AGB.mod'
+
+!MISC. SETUP
+	  
+      history_columns_file = '/path_to_file/Dark_Photon_MESA_files/base_AGB/history_columns.list'
+      save_model_when_terminate = .true.
+      save_model_filename = 'TP-AGB.mod'
+	  
+      !parameters to be used for mass on/off for rotation
+      extras_lrpar = 5
+      extras_rpar(1) = 1.2 !full off
+      extras_rpar(2) = 1.8 !full on
+      extras_rpar(3) = 0.0 !omega_div_omega_crit
+
+      ! Dark photon parameters
+      extras_rpar(4) = 3.0 ! (log) m_DP
+      extras_rpar(5) = -15.00 ! (log) chi
+
+!OPACITY, NETWORK, RATE, etc.
+
+      !network 
+      change_net = .true.
+      new_net_name = 'pp_cno_extras_o18_ne22.net'
+	  
+      !opacities with AGSS09 abundances
+      kappa_file_prefix = 'a09'
+      kappa_lowT_prefix = 'lowT_fa05_a09p'
+      kappa_CO_prefix = 'a09_co'
+      kappa_config_file = '/path_to_file/Dark_Photon_MESA_files/base_AGB/kap_config_file.txt'
+
+      !use jina
+      set_rates_preference = .true.
+      new_rates_preference = 2
+      
+      write_profile_when_terminate = .true.
+      filename_for_profile_when_terminate = 'TP-AGB_profile.data'
+
+!SET INITIAL ABUNDANCES
+
+/ ! end of star_job namelist
+
+&controls
+ 
+      convergence_ignore_equL_residuals = .true.
+      report_why_dt_limits = .false.
+
+      ! Also move this to inlist_cluster
+      !star_history_name = 'AGB_history.data'
+      log_directory = 'LOGS_AGB'
+
+!OUTPUT OPTIONS
+
+      history_interval = 1
+      terminal_interval = 100
+      write_header_frequency = 100
+      photo_digits = 5
+      photo_interval = 5000
+      profile_interval = 100
+
+      star_history_dbl_format = '(1pes32.16e3, 1x)'
+      star_history_int_format = '(i32, 1x)'
+      star_history_txt_format = '(a32, 1x)'
+
+      write_controls_info_with_profile = .false.
+      write_profiles_flag = .true.
+
+      initial_Z = 0.001
+      initial_mass = 0.82
+
+!WHEN TO STOP
+
+      !in run_star_extras, it's set to H1 depletion in the core for low mass stars
+      !gamma_center_limit = 100.0
+      
+      envelope_mass_limit = 0.001 
+      !max_model_number = 100000
+            
+!PHYSICS
+      use_gold_tolerances = .false.
+
+      use_other_neu = .true.	
+      use_other_mesh_delta_coeff_factor = .true.
+
+      !only for the first 100 model steps
+      atm_option = 'table'
+      atm_table = 'photosphere'
+
+      use_Ledoux_criterion = .false.
+
+      mixing_length_alpha = 1.82
+      mlt_option = 'Henyey'
+	  
+      !to help with convergence
+      okay_to_reduce_gradT_excess = .true.
+      Pextra_factor = 2.0
+      ! He overshoot
+
+
+      !H core overshoot calibrated to M67
+
+      !envelope overshoot calibrated to the sun
+      overshoot_scheme(1) = 'exponential'
+      overshoot_zone_loc(1) = 'shell'
+      overshoot_zone_type(1) = 'nonburn'
+      overshoot_bdy_loc(1) = 'any'
+      overshoot_f(1) = 0.0174
+      overshoot_f0(1) = 0.0087
+      
+      !He shell overshoot - included in inlist_cluster if we turn overshoot on there...
+      !overshoot_scheme(2) = 'exponential'
+      !overshoot_zone_loc(2) = 'shell'
+      !overshoot_zone_type(2) = 'burn_He'
+      !overshoot_bdy_loc(2) = 'bottom'
+      !overshoot_f(2) = 0.0174
+      !overshoot_f0(2) = 0.0087
+
+      !enhance `overshoot_f_below_nonburn_shell` by this factor during 3DUP in TPAGB
+      !overshoot_below_noburn_shell_factor = 10
+      
+      !CO enhanced opacities
+      use_Type2_opacities = .true.
+      kap_Type2_full_off_X = 1d-3
+      kap_Type2_full_on_X = 1d-6
+      Zbase = 0.001
+      
+      !rotational mixing if applicable
+      D_SH_factor =  1.0
+      D_SSI_factor = 1.0
+      D_ES_factor =  1.0
+      D_GSF_factor = 1.0
+      D_DSI_factor = 1.0
+      D_ST_factor = 0.0
+      am_D_mix_factor = 0.033
+      am_gradmu_factor = 0.05
+      
+      cool_wind_RGB_scheme = 'Reimers'
+      Reimers_scaling_factor = 0.35
+      cool_wind_AGB_scheme = 'Blocker'
+      Blocker_scaling_factor = 0.2
+      !Vink_scaling_factor = 1.0
+
+      RGB_to_AGB_wind_switch = 1d-4
+      !max_wind = 1d-3
+
+      cool_wind_full_on_T = 1d10
+      hot_wind_full_on_T = 1.1d10
+      hot_wind_scheme = ''
+
+      !diffusion
+      do_element_diffusion = .true.
+      diffusion_dt_limit = 3.15e13
+      diffusion_min_T_at_surface = 1d3
+      diffusion_min_dq_at_surface = 1d-3
+      !turbulent_diffusion_D0 = 1
+      
+      diffusion_gamma_full_on = 165
+      diffusion_gamma_full_off = 175
+                 
+      diffusion_num_classes = 7
+              
+      diffusion_class_representative(1) = 'h1'
+      diffusion_class_representative(2) = 'he3'
+      diffusion_class_representative(3) = 'he4'
+      diffusion_class_representative(4) = 'o16'
+      diffusion_class_representative(5) = 'ne20'
+      diffusion_class_representative(6) = 'ne22'
+      diffusion_class_representative(7) = 'fe56'
+              
+      diffusion_class_A_max(1) = 2
+      diffusion_class_A_max(2) = 3
+      diffusion_class_A_max(3) = 4
+      diffusion_class_A_max(4) = 16
+      diffusion_class_A_max(5) = 21
+      diffusion_class_A_max(6) = 22
+      diffusion_class_A_max(7) = 10000
+              
+      diffusion_class_typical_charge(1) = 1
+      diffusion_class_typical_charge(2) = 2
+      diffusion_class_typical_charge(3) = 2
+      diffusion_class_typical_charge(4) = 8
+      diffusion_class_typical_charge(5) = 10
+      diffusion_class_typical_charge(6) = 10
+      diffusion_class_typical_charge(7) = 21
+      
+      !to help with breathing pulses
+      !include_composition_in_eps_grav = .true.
+      
+      use_dedt_form_of_energy_eqn = .true.
+
+!CORE MASS DEFINITION
+
+      he_core_boundary_h1_fraction = 1d-4
+      c_core_boundary_he4_fraction = 1d-4
+      o_core_boundary_c12_fraction = 1d-4
+	  	  
+!MESH AND TIMESTEP PARAMETERS
+      mesh_delta_coeff = 1.0
+      varcontrol_target = 1d-4
+      max_allowed_nz = 50000
+	  
+      !better resolution of the Henyey hook
+      delta_lg_XH_cntr_max = -1
+
+      ! limit for magnitude of max change
+      delta_lgTeff_limit = 0.005
+      delta_lgTeff_hard_limit = 0.01
+      delta_lgL_limit = 0.02 
+      delta_lgL_hard_limit = 0.05
+      
+/ ! end of controls namelist
+
+&pgstar         
+
+/ ! end of pgstar namelist

@@ -1,0 +1,19 @@
+&star_job
+    extras_rpar(4) = 3.40
+    extras_rpar(5) = -15.00 
+    save_model_filename = 'HB.mod'
+
+/! end of star_job namelist
+
+&controls
+    star_history_name = 'RGB_history.data'
+    initial_mass = 0.82 
+    initial_Z = 0.001
+    initial_Y = 0.2607
+    Zbase = 0.001
+    photo_interval = 1000
+    Reimers_scaling_factor = 0.20
+    HB_limit = 0.92
+
+/ ! end of controls namelist
+
