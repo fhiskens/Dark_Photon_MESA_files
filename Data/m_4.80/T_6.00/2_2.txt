@@ -1,0 +1,11 @@
+-inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf
+-inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf
+-inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf
+-inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf
+-inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf
+-inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf
+-inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf
+-inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf
+-inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf
+-inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf
+-3.215280640927321656e+02 -3.215280640927321656e+02 -3.215280640927321656e+02 -3.215280640927321656e+02 -3.215280640927321656e+02 -3.215280640927321656e+02 -3.215280640927321656e+02 -3.215280640927321656e+02 -3.215280640927321656e+02 -3.215280640927321656e+02 -3.215280640927321656e+02

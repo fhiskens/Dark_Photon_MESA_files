@@ -1,0 +1,11 @@
+-inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -3.212163102316764025e+02
+-inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -3.214488828466845121e+02
+-inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf
+-inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf
+-inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf
+-inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf
+-inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf
+-inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf
+-inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf
+-inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf
+-inf -inf -inf -inf -inf -inf -inf -inf -inf -inf -inf
